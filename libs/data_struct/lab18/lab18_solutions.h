@@ -63,4 +63,6 @@ bool hasStrWordsFromEqualSymbols(char* string);
 
 void getStrFromWordsNotEqualToTheLast(char* string);
 
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(char* string, char* word, WordDescriptor* wordDst);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

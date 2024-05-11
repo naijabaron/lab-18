@@ -396,3 +396,30 @@ void getStrFromWordsNotEqualToTheLast(char* string) {
 
     *(destinationStart - (destinationStart != string)) = '\0';
 }
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(char* string, char* word, WordDescriptor* wordDst) {
+    WordDescriptor previousWord;
+
+    if (getWord(string, &previousWord)) {
+        if (!isWordFound(word, previousWord)) {
+            string = previousWord.end;
+            WordDescriptor nextWord;
+
+            while (getWord(string, &nextWord)) {
+                if (isWordFound(word, nextWord)) {
+                    *wordDst = previousWord;
+                    return WORD_FOUND;
+                }
+
+                previousWord = nextWord;
+                string = previousWord.end;
+            }
+
+            return NOT_FOUND_A_WORD_WITH_A;
+        }
+
+        return FIRST_WORD_WITH_A;
+    }
+
+    return EMPTY_STRING;
+}
