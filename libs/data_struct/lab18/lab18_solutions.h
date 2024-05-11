@@ -65,4 +65,6 @@ void getStrFromWordsNotEqualToTheLast(char* string);
 
 WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(char* string, char* word, WordDescriptor* wordDst);
 
+void removePalindromes(char* string);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

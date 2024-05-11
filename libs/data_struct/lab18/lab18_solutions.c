@@ -423,3 +423,39 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(char* string,
 
     return EMPTY_STRING;
 }
+
+void removePalindromes(char* string) {
+    char* sourceStart = string;
+    char* destinationStart = string;
+    WordDescriptor currentWord;
+
+    while (getWord(sourceStart, &currentWord)) {
+        destinationStart = copy(sourceStart, currentWord.begin, destinationStart);
+
+        if (!isPalindrome(currentWord)) {
+            destinationStart = copy(currentWord.begin, currentWord.end, destinationStart);
+        }
+
+        sourceStart = currentWord.end;
+    }
+
+    *copy(sourceStart, string + getLength(string), destinationStart) = '\0';
+}
+
+void removePalindromes(char* string) {
+    char* sourceStart = string;
+    char* destinationStart = string;
+    WordDescriptor currentWord;
+
+    while (getWord(sourceStart, &currentWord)) {
+        destinationStart = copy(sourceStart, currentWord.begin, destinationStart);
+
+        if (!isPalindrome(currentWord)) {
+            destinationStart = copy(currentWord.begin, currentWord.end, destinationStart);
+        }
+
+        sourceStart = currentWord.end;
+    }
+
+    *copy(sourceStart, string + getLength(string), destinationStart) = '\0';
+}
