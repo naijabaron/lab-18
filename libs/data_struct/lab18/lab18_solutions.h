@@ -51,4 +51,9 @@ void mixWords(char* left, char* right, char* destination);
 
 void reverseWordsOrder(char* string);
 
+void printWord(WordDescriptor word);
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithSymbol(char* string, WordDescriptor* word, char symbol);
+
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

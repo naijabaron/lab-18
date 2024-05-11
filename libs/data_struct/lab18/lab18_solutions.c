@@ -255,3 +255,34 @@ void reverseWordsOrder(char* string) {
     }
     *copy(string_buffer, begin_dst - (begin_dst != string_buffer), string) = '\0';
 }
+
+static bool isSymbolInWord(WordDescriptor word, const char symbol) {
+    return find(word.begin, word.end, symbol) != word.end;
+}
+
+WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithSymbol(char* string, WordDescriptor* word, char symbol) {
+    WordDescriptor previousWord;
+
+    if (getWord(string, &previousWord)) {
+        if (!isSymbolInWord(previousWord, symbol)) {
+            string = previousWord.end;
+            WordDescriptor next_word;
+
+            while (getWord(string, &next_word)) {
+                if (isSymbolInWord(next_word, symbol)) {
+                    *word = previousWord;
+                    return WORD_FOUND;
+                }
+
+                previousWord = next_word;
+                string = previousWord.end;
+            }
+
+            return NOT_FOUND_A_WORD_WITH_A;
+        }
+
+        return FIRST_WORD_WITH_A;
+    }
+
+    return EMPTY_STRING;
+}
