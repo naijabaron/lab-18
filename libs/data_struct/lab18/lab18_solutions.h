@@ -59,4 +59,6 @@ bool findLastEqualWordInBothStr(char* string, char* word, WordDescriptor* lastWo
 
 bool hasStringEqualWords(char* string);
 
+bool hasStrWordsFromEqualSymbols(char* string);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

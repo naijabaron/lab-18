@@ -336,3 +336,44 @@ bool hasStringEqualWords(char* string) {
 
     return false;
 }
+static int charComparator(const void* left, const void* right) {
+    return *(char*) left - *(char*) right;
+}
+
+static void removeAdjacentEqualLettersInWord(WordDescriptor* word) {
+    char* destinationStart = word->begin;
+    char* sourceStart = word->begin;
+
+    while (sourceStart != word->end) {
+        if (*sourceStart != *(sourceStart + 1)) {
+            *destinationStart = *sourceStart;
+            destinationStart++;
+        }
+
+        sourceStart++;
+    }
+
+    word->end = destinationStart;
+}
+
+bool hasStrWordsFromEqualSymbols(char* string) {
+    *copy(string, string + getLength(string), string_buffer) = '\0';
+    getBagOfWords(string_buffer, &bag1);
+
+    for (size_t i = 0; i < bag1.size; i++) {
+        qsort(bag1.words[i].begin, bag1.words[i].end - bag1.words[i].begin, sizeof(char), charComparator);
+        removeAdjacentEqualLettersInWord(&bag1.words[i]);
+    }
+
+    qsort(bag1.words, bag1.size, sizeof(*bag1.words), wordComparator);
+
+    for (size_t i = 1; i < bag1.size; i++) {
+        if (compareWords(bag1.words[i], bag1.words[i - 1]) == 0) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
