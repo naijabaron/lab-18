@@ -184,3 +184,34 @@ void outputWordsInReverseOrder(char* string) {
         putchar('\n');
     }
 }
+
+static bool isPalindrome(WordDescriptor word) {
+    word.end--;
+
+    while (word.begin < word.end) {
+        if (*word.begin != *word.end) {
+            return false;
+        }
+
+        word.begin++;
+        word.end--;
+    }
+
+    return true;
+}
+
+int countPalindromes(char* string) {
+    int count = 0;
+    char* searchPoint = string;
+    WordDescriptor word;
+
+    while (getWord(searchPoint, &word)) {
+        if (isPalindrome(word)) {
+            count++;
+        }
+
+        searchPoint = word.end;
+    }
+
+    return count;
+}
