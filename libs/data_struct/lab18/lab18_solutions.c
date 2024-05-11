@@ -459,3 +459,25 @@ void removePalindromes(char* string) {
 
     *copy(sourceStart, string + getLength(string), destinationStart) = '\0';
 }
+
+void addWordsToShorterStr(char* left, char* right) {
+    getBagOfWords(left, &bag1);
+    getBagOfWords(right, &bag2);
+    char *leftStart = findNonSpaceReverse(left - 1, left + getLength(left) - 1) + 1;
+
+    for (size_t i = bag1.size; i < bag2.size; i++) {
+        *leftStart++ = ' ';
+        leftStart = copy(bag2.words[i].begin, bag2.words[i].end, leftStart);
+    }
+
+    char *rightStart = findNonSpaceReverse(right - 1, right + getLength(right) - 1) + 1;
+
+    for (size_t i = bag2.size; i < bag1.size; i++) {
+        *rightStart++ = ' ';
+        rightStart = copy(bag1.words[i].begin, bag1.words[i].end, rightStart);
+    }
+
+    *leftStart = '\0';
+    *rightStart = '\0';
+}
+

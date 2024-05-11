@@ -67,4 +67,7 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordInBothStr(char* string,
 
 void removePalindromes(char* string);
 
+void addWordsToShorterStr(char* left, char* right);
+
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H
