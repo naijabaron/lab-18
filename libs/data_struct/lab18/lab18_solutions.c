@@ -242,3 +242,16 @@ void mixWords(char* left, char* right, char* destination) {
 
     *(dst - (dst != destination)) = '\0';
 }
+
+void reverseWordsOrder(char* string) {
+    char* r_begin_src = string + getLength(string) - 1;
+    char* r_end_src = string - 1;
+    char* begin_dst = string_buffer;
+    WordDescriptor word;
+    while (getWordReverse(r_end_src, r_begin_src, &word)) {
+        begin_dst = copy(word.begin, word.end, begin_dst);
+        *begin_dst++ = ' ';
+        r_begin_src = word.begin - 1;
+    }
+    *copy(string_buffer, begin_dst - (begin_dst != string_buffer), string) = '\0';
+}
