@@ -286,3 +286,35 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithSymbol(char* string
 
     return EMPTY_STRING;
 }
+
+static bool isWordFound(char* string, WordDescriptor word) {
+    WordDescriptor currentWord;
+
+    while (getWord(string, &currentWord)) {
+        if (compareWords(word, currentWord) == 0) {
+            return true;
+        }
+
+        string = currentWord.end;
+    }
+
+    return false;
+}
+
+bool findLastEqualWordInBothStr(char* string, char* word, WordDescriptor* lastWord) {
+    char* searchEnd = string - 1;
+    char* searchStart = string + getLength(string) - 1;
+    WordDescriptor currentWord;
+
+    while (getWordReverse(searchEnd, searchStart, &currentWord)) {
+        if (isWordFound(word, currentWord)) {
+            *lastWord = currentWord;
+
+            return true;
+        }
+
+        searchStart = currentWord.begin - 1;
+    }
+
+    return false;
+}

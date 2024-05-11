@@ -55,5 +55,7 @@ void printWord(WordDescriptor word);
 
 WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithSymbol(char* string, WordDescriptor* word, char symbol);
 
+bool findLastEqualWordInBothStr(char* string, char* word, WordDescriptor* lastWord);
+
 
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H
