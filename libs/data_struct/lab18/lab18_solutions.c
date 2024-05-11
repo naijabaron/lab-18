@@ -154,3 +154,48 @@ bool areWordsSorted(char* string) {
 
     return true;
 }
+static void getBagOfWords(char* searchStart, BagOfWords* bag) {
+    size_t wordIndex = 0;
+
+    while (getWord(searchStart, bag->words + wordIndex)) {
+        searchStart = bag->words[wordIndex].end;
+        wordIndex++;
+    }
+
+    bag->size = wordIndex;
+}
+
+void printWord(WordDescriptor word) {
+    if (*word.begin == '\0') {
+        return;
+    }
+
+    while (word.begin != word.end) {
+        putc(*word.begin, stdout);
+        word.begin++;
+    }
+}
+
+void outputWordsInReverseOrder(char* string) {
+    getBagOfWords(string, &bag1);
+
+    for (size_t i = bag1.size - 1; i != -1; i--) {
+        printWord(bag1.words[i]);
+        putchar('\n');
+    }
+}
+
+static bool isPalindrome(WordDescriptor word) {
+    word.end--;
+
+    while (word.begin < word.end) {
+        if (*word.begin != *word.end) {
+            return false;
+        }
+
+        word.begin++;
+        word.end--;
+    }
+
+    return true;
+}
