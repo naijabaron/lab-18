@@ -84,3 +84,24 @@ void replaceDigitsBySpaces(char* string) {
 
     *copy(string_buffer, writePoint, string) = '\0';
 }
+
+int compareWords(WordDescriptor left, WordDescriptor right) {
+    while (left.begin != left.end && right.begin != right.end && *left.begin == *right.begin) {
+        left.begin++;
+        right.begin++;
+    }
+
+    if (left.begin == left.end && right.begin == right.end) {
+        return 0;
+    }
+
+    if (left.begin == left.end && right.begin != right.end) {
+        return -(*right.begin);
+    }
+
+    if (left.begin != left.end && right.begin == right.end) {
+        return *left.begin;
+    }
+
+    return *left.begin - *right.begin;
+}

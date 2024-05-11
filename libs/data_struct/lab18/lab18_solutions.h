@@ -13,4 +13,8 @@ void forEachWord(char* string, void (*function)(WordDescriptor));
 
 void lettersToStartDigitsToEnd(WordDescriptor word);
 
+void replaceDigitsBySpaces(char* string);
+
+int compareWords(WordDescriptor left, WordDescriptor right);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H
