@@ -17,4 +17,6 @@ void replaceDigitsBySpaces(char* string);
 
 int compareWords(WordDescriptor left, WordDescriptor right);
 
+void replace(char* string, char* replaceable, char* replacement);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H
