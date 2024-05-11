@@ -3,4 +3,7 @@
 
 #include "../string/string.h"
 
+void removeExtraSpaces(char* source);
+
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H
