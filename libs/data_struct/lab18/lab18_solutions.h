@@ -69,5 +69,7 @@ void removePalindromes(char* string);
 
 void addWordsToShorterStr(char* left, char* right);
 
+bool isSubstringBySymbols(char* string, char* symbols);
+
 
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

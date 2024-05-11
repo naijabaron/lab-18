@@ -481,3 +481,25 @@ void addWordsToShorterStr(char* left, char* right) {
     *rightStart = '\0';
 }
 
+static void getLettersInString(char* string, bool letters[ASCII_SYMBOLS_AMOUNT]) {
+    while (*string != '\0') {
+        letters[*string] = true;
+        string++;
+    }
+}
+
+bool isSubstringBySymbols(char* string, char* symbols) {
+    bool letters[ASCII_SYMBOLS_AMOUNT] = {false};
+
+    getLettersInString(symbols, letters);
+
+    while (*string != '\0') {
+        if (!letters[*string]) {
+            return false;
+        }
+
+        string++;
+    }
+
+    return true;
+}
