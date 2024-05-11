@@ -376,4 +376,23 @@ bool hasStrWordsFromEqualSymbols(char* string) {
     return false;
 }
 
+void getStrFromWordsNotEqualToTheLast(char* string) {
+    char* end = string - 1;
+    char* start = string + getLength(string) - 1;
+    WordDescriptor lastWord;
+    getWordReverse(end, start, &lastWord);
+    char* sourceStart = string;
+    char* destinationStart = string;
+    WordDescriptor currentWord;
 
+    while (getWord(sourceStart, &currentWord)) {
+        if (compareWords(currentWord, lastWord) != 0) {
+            destinationStart = copy(currentWord.begin, currentWord.end, destinationStart);
+            *destinationStart++ = ' ';
+        }
+
+        sourceStart = currentWord.end;
+    }
+
+    *(destinationStart - (destinationStart != string)) = '\0';
+}
