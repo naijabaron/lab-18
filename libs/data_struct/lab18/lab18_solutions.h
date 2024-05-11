@@ -19,4 +19,6 @@ int compareWords(WordDescriptor left, WordDescriptor right);
 
 void replace(char* string, char* replaceable, char* replacement);
 
+bool areWordsSorted(char* string);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

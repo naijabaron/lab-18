@@ -137,3 +137,20 @@ void replace(char* string, char* replaceable, char* replacement) {
 
     *writePoint = '\0';
 }
+bool areWordsSorted(char* string) {
+    WordDescriptor previousWord;
+
+    if (getWord(string, &previousWord)) {
+        WordDescriptor currentWord;
+
+        while (getWord(previousWord.end, &currentWord)) {
+            if (compareWords(previousWord, currentWord) > 0) {
+                return false;
+            }
+
+            previousWord = currentWord;
+        }
+    }
+
+    return true;
+}
