@@ -47,4 +47,6 @@ void outputWordsInReverseOrder(char* string);
 
 int countPalindromes(char* string);
 
+void mixWords(char* left, char* right, char* destination);
+
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

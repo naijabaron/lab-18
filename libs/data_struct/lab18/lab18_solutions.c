@@ -215,3 +215,30 @@ int countPalindromes(char* string) {
 
     return count;
 }
+
+void mixWords(char* left, char* right, char* destination) {
+    WordDescriptor word1, word2;
+    bool isWord1Found, isWord2Found;
+    char* searchStart1 = left;
+    char* searchStart2 = right;
+    char* dst = destination;
+
+    while ((isWord1Found = getWord(searchStart1, &word1)),
+            (isWord2Found = getWord(searchStart2, &word2)),
+            isWord1Found || isWord2Found) {
+
+        if (isWord1Found) {
+            dst = copy(word1.begin, word1.end, dst);
+            *dst++ = ' ';
+            searchStart1 = word1.end;
+        }
+
+        if (isWord2Found) {
+            dst = copy(word2.begin, word2.end, dst);
+            *dst++ = ' ';
+            searchStart2 = word2.end;
+        }
+    }
+
+    *(dst - (dst != destination)) = '\0';
+}
