@@ -57,5 +57,6 @@ WordBeforeFirstWordWithAReturnCode getWordBeforeFirstWordWithSymbol(char* string
 
 bool findLastEqualWordInBothStr(char* string, char* word, WordDescriptor* lastWord);
 
+bool hasStringEqualWords(char* string);
 
 #endif //OP_LAB_17_LAB18_SOLUTIONS_H

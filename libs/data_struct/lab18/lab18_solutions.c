@@ -318,3 +318,21 @@ bool findLastEqualWordInBothStr(char* string, char* word, WordDescriptor* lastWo
 
     return false;
 }
+
+static int wordComparator(const void* left, const void* right) {
+    return compareWords(*(WordDescriptor *) left, *(WordDescriptor *) right);
+}
+
+bool hasStringEqualWords(char* string) {
+    getBagOfWords(string, &bag1);
+
+    qsort(bag1.words, bag1.size, sizeof(*bag1.words), wordComparator);
+
+    for (size_t i = 1; i < bag1.size; i++) {
+        if (compareWords(bag1.words[i], bag1.words[i - 1]) == 0) {
+            return true;
+        }
+    }
+
+    return false;
+}
